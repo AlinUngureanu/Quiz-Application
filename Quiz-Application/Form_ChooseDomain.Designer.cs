@@ -61,11 +61,11 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Items.AddRange(new object[] {
-            "Artă",
+            "Arta",
             "Istorie",
             "Sport",
             "Geografie",
-            "Știință"});
+            "Stiinta"});
             this.listBox1.Location = new System.Drawing.Point(110, 130);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(153, 148);

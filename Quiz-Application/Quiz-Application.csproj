@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database_Manager.cs" />
     <Compile Include="Form_ChooseDomain.cs">
       <SubType>Form</SubType>
     </Compile>

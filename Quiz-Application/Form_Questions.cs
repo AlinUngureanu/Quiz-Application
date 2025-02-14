@@ -9,123 +9,20 @@ namespace Quiz_Application
         private int questionIndex;
         private int correctAnswers;
         private List<Question> questions;
+        private readonly Database_Manager dbManager;
 
         public Form_Questions(int index, string domeniu)
         {
             InitializeComponent();
+            dbManager = new Database_Manager();
             InitQuestions(index, domeniu);
             InitControls();
         }
 
         private void InitQuestions(int indice, string domeniu)
         {
-            questions = new List<Question>();
-            switch (indice)
-            {
-                case 0:
-                    questions.Add(new Question("1. Cine a pictat celebrul tablou " +
-                        "\"Cina cea de taină\"?", new List<string> { "Michelangelo",
-                            "Leonardo da Vinci", "Nicolae Grigorescu", "Pablo Picasso" },
-                            "Leonardo da Vinci"));
-                    questions.Add(new Question("2. Care este piața considerată centrul Moscovei " +
-                        "și al Rusiei?", new List<string> { "Piata Eroilor", "Piața Unirii",
-                            "Piața Roșie", "Piața Revoluției" }, "Piața Roșie"));
-                    questions.Add(new Question("3. Unde se află pictura \"Gioconda\" a lui " +
-                        "Leonardo da Vinci?", new List<string> { "Muzeul Rodin",
-                            "Muzeul Georges Pompidou", "Muzeul Orsay", "Muzeul Luvru" },
-                            "Muzeul Luvru"));
-                    questions.Add(new Question("4. Care a fost reşedinţa Regelui Ferdinand I al" +
-                        " României şi al Reginei Maria?", new List<string> { "Castelul Peleș",
-                            "Castelul Corvinilor", "Castelul Bran", "Castelul Bánffy" },
-                            "Castelul Peles"));
-                    questions.Add(new Question("5. Cine a pictat tavanul Capelei Sixtine?",
-                        new List<string> { "Leonardo da Vinci", "Rafael",
-                            "Michelangelo Buonarroti", "Donatello" }, "Michelangelo Buonarroti"));
-                    label_title.Text = "Întrebări din " + domeniu;
-                    break;
-
-                case 1:
-                    questions.Add(new Question("1. Câți ani a durat războiul de 100 de ani?",
-                        new List<string> { "100 ani", "116 ani", "95 ani", "130 ani" }, "116 ani"));
-                    questions.Add(new Question("2. Ce președinte sovietic a înființat Glasnost " +
-                        "și Perestroika?", new List<string> { "Vladimir Lenin", "Nikita Hrușciov",
-                            "Iosif Stalin", "Mihail Gorbaciov" }, "Mihail Gorbaciov"));
-                    questions.Add(new Question("3. Cine a fost primul om care a mers pe Lună?",
-                        new List<string> { "Louis Armstrong", "Dumitru Prunariu", "Neil Armstrong",
-                            "Ion Iliescu" }, "Neil Armstrong"));
-                    questions.Add(new Question("4. Cine a înfăptuit prima unire a Principatelor " +
-                        "Române?", new List<string> { "Mircea cel Bătrân", "Mihai Viteazul",
-                            "Alexandru Ioan Cuza", "Ștefan cel Mare" }, "Mihai Viteazul"));
-                    questions.Add(new Question("5. Ce grad de rudenie este între Carol al-II-lea " +
-                        "și Ferdinand I?", new List<string> { "Carol al-II-lea este vărul " +
-                        "lui Ferdinand I", "Ferdinand I este fratele lui Carol al-II-lea",
-                            "Ferdinand I este tatăl lui Carol al-II-lea", "Carol al-II-lea " +
-                            "este cumnatul lui Ferdinand I" }, "Ferdinand I este tatăl lui " +
-                            "Carol al-II-lea"));
-                    label_title.Text = "Întrebări din " + domeniu;
-                    break;
-
-                case 2:
-                    questions.Add(new Question("1. Prima gimnastă din lume care a primit nota 10 " +
-                        "într-un concurs olimpic de gimnastică:", new List<string>
-                        { "Elena Leuștean", "Simone Biles", "Nadia Comăneci", "Emilia Eberle" },
-                        "Nadia Comăneci"));
-                    questions.Add(new Question("2. Câți pași are voie jucătorul de handball " +
-                        "să se deplaseze cu mingea în mână?", new List<string> { "3 pași",
-                            "2 pași", "4 pași", "5 pași" }, "3 pași"));
-                    questions.Add(new Question("3. Care este lungimea unui bazin de înot" +
-                        " olimpic?", new List<string> { "60 metri", "50 metri", "100 metri",
-                            "40 metri" }, "50 metri"));
-                    questions.Add(new Question("4. Club de fotbal din Italia poreclit şi" +
-                        " \"bătrâna doamnă\"?", new List<string> { "AS Roma",
-                            "Juventus Football Club", "AC Milan",
-                            "Football Club Internazionale Milano" }, "Juventus Football Club"));
-                    questions.Add(new Question("5. Care este jocul sportiv tradiţional " +
-                        "românesc?", new List<string> { "Baschet", "Fotbal", "Tenis de masă",
-                            "Oina" }, "Oina"));
-                    label_title.Text = "Întrebări din " + domeniu;
-                    break;
-
-                case 3:
-                    questions.Add(new Question("1. Din ce țară izvorăște Dunărea?",
-                        new List<string> { "Polonia", "Germania", "România",
-                            "Austria" }, "Germania"));
-                    questions.Add(new Question("2. Care este cel mai mare arhipelag al " +
-                        "Terrei (peste 17000 insule)?", new List<string> { "Indonezia",
-                            "Filipine", "Japonia", "Bahamas" }, "Indonezia"));
-                    questions.Add(new Question("3. Cum se numește mişcarea pe care o face " +
-                        "Pământul în jurul Soarelui?", new List<string>
-                        { "Mişcare retrogradă", "Mişcare de rotaţie", "Mişcare de revoluţie",
-                            "Mişcare de spin" }, "Mişcare de revoluţie"));
-                    questions.Add(new Question("4. Care este cel mai lung fluviu din Europa?",
-                        new List<string> { "Rin", "Sena", "Tamisa", "Volga" }, "Volga"));
-                    questions.Add(new Question("5. Cum se numește gura de vărsare a unor fluvii " +
-                        "în formă de pâlnie?", new List<string> { "Estuar", "Lagună", "Golf",
-                            "Deltă" }, "Estuar"));
-                    label_title.Text = "Întrebări din " + domeniu;
-                    break;
-
-                case 4:
-                    questions.Add(new Question("1. Cum se numește știința care studiază limba " +
-                        "și legile ei?", new List<string> { "Gramatica", "Lingvistica",
-                            "Literatura", "Filologia" }, "Lingvistica"));
-                    questions.Add(new Question("2. Cum se numește știinţa care studiază " +
-                        "manifestarea elementelor atmosferice?", new List<string>
-                        { "Meteorologia", "Metrologia", "Hidrologia", "Topologia" },
-                        "Meteorologia"));
-                    questions.Add(new Question("3. Cum se numește știinţa care studiază regulile " +
-                        "de scriere corectă?", new List<string> { "Ortoepia", "Caligrafia",
-                            "Punctuația", "Ortografia" }, "Ortografia"));
-                    questions.Add(new Question("4. Cum se numește știinţa care studiază " +
-                        "ereditatea şi variabilitatea organismelor?", new List<string>
-                        { "Biochimia", "Ecologia", "Genetica", "Paleontologia" }, "Genetica"));
-                    questions.Add(new Question("5. Cum se numește știinţa care se ocupă cu" +
-                        " studiul organismelor și al fosilelor?", new List<string>
-                        { "Filologia", "Paleontologia", "Fiziologia", "Paleologia" },
-                        "Paleontologia"));
-                    label_title.Text = "Întrebări din " + domeniu;
-                    break;
-            }
+            questions = dbManager.GetQuestions(domeniu);
+            label_title.Text = "Întrebări din " + domeniu;
         }
 
         private void InitControls()
@@ -212,11 +109,10 @@ namespace Quiz_Application
         public List<string> Answers;
         public string CorrectAnswer;
 
-        public Question(string text, List<string> answers, string correctAnswer)
+        public Question(string text)
         {
             Text = text;
-            Answers = answers;
-            CorrectAnswer = correctAnswer;
+            Answers = new List<string>();
         }
     }
 }

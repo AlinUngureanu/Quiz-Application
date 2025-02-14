@@ -59,7 +59,7 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(113, 106);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(310, 156);
+            this.groupBox1.Size = new System.Drawing.Size(322, 156);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Întrebare";
@@ -154,7 +154,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_title);
             this.Name = "Form_Questions";
-            this.Text = "Form_Questions";
+            this.Text = "Întrebări";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
