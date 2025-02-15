@@ -13,10 +13,16 @@ namespace Quiz_Application
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT q.Question_ID, q.Text, a.AnswerText, a.IsCorrect " +
+                string query = "WITH RandomQuestions AS ( " +
+                               "SELECT TOP 5 Question_ID " + 
+                               "FROM Questions " +
+                               "WHERE Category = @category " +
+                               "ORDER BY NEWID() " + 
+                               ") " +
+                               "SELECT q.Question_ID, q.Text, a.AnswerText, a.IsCorrect " +
                                "FROM Questions q " +
                                "JOIN Answers a ON q.Question_ID = a.Question_ID " +
-                               "WHERE q.Category = @category " +
+                               "WHERE q.Question_ID IN (SELECT Question_ID FROM RandomQuestions) " +
                                "ORDER BY q.Question_ID";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

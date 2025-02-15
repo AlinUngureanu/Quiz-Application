@@ -48,8 +48,7 @@ namespace Quiz_Application
         {
             if (listBox1.SelectedIndex >= 0)
             {
-                Form_Questions f2 = new Form_Questions(listBox1.SelectedIndex,
-                    Convert.ToString(listBox1.SelectedItem));
+                Form_Questions f2 = new Form_Questions(Convert.ToString(listBox1.SelectedItem));
                 f2.Show();
             }
             else

@@ -15,7 +15,7 @@ namespace Quiz_Application
         {
             StreamReader streamReader = new StreamReader(path: "login.txt");
             {
-                string line = string.Empty;
+                string line;
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     string[] loginArray = line.Split(' ');

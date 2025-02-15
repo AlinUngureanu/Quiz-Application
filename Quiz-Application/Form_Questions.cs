@@ -10,25 +10,22 @@ namespace Quiz_Application
         private int correctAnswers;
         private List<Question> questions;
         private readonly Database_Manager dbManager;
+        private readonly string domeniu;
 
-        public Form_Questions(int index, string domeniu)
+        public Form_Questions(string domeniu)
         {
             InitializeComponent();
             dbManager = new Database_Manager();
-            InitQuestions(index, domeniu);
-            InitControls();
-        }
-
-        private void InitQuestions(int indice, string domeniu)
-        {
-            questions = dbManager.GetQuestions(domeniu);
             label_title.Text = "Întrebări din " + domeniu;
+            this.domeniu = domeniu;
+            InitControls();
         }
 
         private void InitControls()
         {
             questionIndex = 0;
             correctAnswers = 0;
+            questions = dbManager.GetQuestions(domeniu);
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 100;
             progressBar1.Value = 0;
@@ -39,7 +36,7 @@ namespace Quiz_Application
         private void DisplayQuestion()
         {
             Question question = questions[questionIndex];
-            groupBox1.Text = question.Text;
+            groupBox1.Text = (questionIndex + 1) + ". " + question.Text;
             radioButton1.Text = question.Answers[0];
             radioButton2.Text = question.Answers[1];
             radioButton3.Text = question.Answers[2];
